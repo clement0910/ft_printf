@@ -19,4 +19,11 @@ typedef struct	s_struct //peut opti ca
 	uint8_t zero:1;
 }				t_struct;
 
+int		ft_printleftspace(const char *fmt, int *x, t_struct *flag);
+int		ft_printprecision(const char *fmt, int *x, t_struct *flag, va_list arg);
+int		ft_printwidth(t_struct *flag, int *x, va_list arg);
+int		ft_printspace(const char *fmt, int *x, t_struct *flag);
+int		ft_printzero(int *x, t_struct *flag);
+
+
 #endif

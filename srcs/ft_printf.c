@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 12:54:42 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 20:20:40 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 14:50:30 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,6 +27,22 @@ int		ft_gotoflags(const char *fmt)
 	return (i);
 }
 
+int		ft_addflags(t_struct *flag, const char *fmt, int *x, va_list arg)
+{
+	if (fmt[*x] == '-')
+		return (ft_printleftspace(fmt, x, flag));
+	else if (fmt[*x] == '.')
+		return (ft_print_precision(fmt, x, flag, arg));
+	else if (fmt[*x] == '*')
+		return (ft_printwidth(flag, x, arg));
+	else if (fmt[*x] > '0' && fmt[*x] <= '9')
+		return (ft_printspace(fmt, x, flag));
+	else if (fmt[*x] == '0')
+		return (ft_print_zero(x, flag));
+	else
+		return (-1);
+}
+
 int		ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 {
 	int x;
@@ -39,9 +55,7 @@ int		ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 	while (fmt[x])
 	{
 		while (temp != -1)
-		{
-			temp = ft_addflags();
-		}
+			temp = ft_addflags(flag, fmt, &x, arg);
 		ft_convert();
 		temp = 0;
 		ft_memset((void*)&flag, -1, sizeof(flag));
