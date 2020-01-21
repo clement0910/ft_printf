@@ -16,6 +16,7 @@ typedef struct	s_struct //peut opti ca
 	int	nspace;
 	int space;
 	int write;
+	uint8_t snull:1;
 	uint8_t zero:1;
 }				t_struct;
 
