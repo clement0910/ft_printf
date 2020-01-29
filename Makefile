@@ -7,6 +7,7 @@ SRCS = srcs/ft_printf.c \
 		srcs/ft_printf_flags.c \
 		srcs/ft_printf_aux.c \
 		srcs/ft_printf_conversion.c \
+		srcs/ft_printf_convertutils.c \
 
 FLAGS = -ggdb -Wall -Werror -Wextra
 
