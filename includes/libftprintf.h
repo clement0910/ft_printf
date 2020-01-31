@@ -57,4 +57,6 @@ void    ft_putnbrunsigned(unsigned int x);
 void       ft_initstruct(t_struct *flag);
 void       ft_refreshstruct(t_struct *flag);
 
+char 	*ft_utoa_zero(void);
+
 #endif

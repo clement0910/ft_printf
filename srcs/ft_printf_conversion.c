@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 10:15:14 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 20:21:28 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 18:09:30 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -138,6 +138,12 @@ void	ft_convert_x(t_struct *flag, va_list arg)
 	char *str;
 
 	d = va_arg(arg, unsigned int);
+	if (flag->precision == 0 && d == 0)
+	{
+		ft_multipleswrite(flag->space, ' ', flag);
+		ft_multipleswrite(flag->nspace, ' ', flag);
+		return ;
+	}
 	str = ft_utoa_base(d, "0123456789abcdef");
 	len = ft_strlen(str);
 	ft_convert_dutils(flag, len);
@@ -159,7 +165,13 @@ void	ft_convert_xmaj(t_struct *flag, va_list arg)
 	char *str;
 
 	d = va_arg(arg, unsigned int);
-	str = ft_utoa_base(d, "0123465789ABCDEF");
+	if (flag->precision == 0 && d == 0)
+	{
+		ft_multipleswrite(flag->space, ' ', flag);
+		ft_multipleswrite(flag->nspace, ' ', flag);
+		return ;
+	}
+	str = ft_utoa_base(d, "0123456789ABCDEF");
 	len = ft_strlen(str);
 	ft_convert_dutils(flag, len);
 	if (flag->space > 0 && flag->zero == 0)

@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/21 13:11:02 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 20:21:43 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 18:05:39 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,6 +63,8 @@ char    *ft_ulltoa_base(unsigned long long int nbr, char *base)
     int lenbase;
 
     x = 0;
+	if (nbr == 0)
+		return (ft_utoa_zero());
     lenbase = ft_strlen(base);
     m = ft_howmanymalloc(nbr, base);
     str = malloc((m + 1) * sizeof(char));
@@ -85,6 +87,8 @@ char    *ft_utoa_base(unsigned int nbr, char *base)
     int lenbase;
 
     x = 0;
+	if (nbr == 0)
+		return (ft_utoa_zero());
     lenbase = ft_strlen(base);
     m = ft_howmanymalloc(nbr, base);
     str = malloc((m + 1) * sizeof(char));
@@ -97,6 +101,16 @@ char    *ft_utoa_base(unsigned int nbr, char *base)
     str[x] = '\0';
     ft_strrev(str);
     return (str);
+}
+
+char 	*ft_utoa_zero(void)
+{
+	char *str;
+
+	str = malloc(2 * sizeof(char));
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
 }
 
 int		ft_uintlen(unsigned int t) //Peux remplacer par how_many_malloc ?
