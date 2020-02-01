@@ -14,10 +14,10 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # include "../libft/libft.h"
-# include <inttypes.h> // For 1 bits int
+# include <inttypes.h>
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h> //For Test Only
+# include <stdio.h>
 
 int				ft_printf(const char *format, ...)
 				 __attribute__((format(printf,1,2)));

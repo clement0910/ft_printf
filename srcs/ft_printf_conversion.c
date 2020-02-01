@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 10:15:14 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 14:51:46 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 21:11:35 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,6 +88,8 @@ void	ft_convert_p(t_struct *flag, va_list arg)
 	ptr = (unsigned long long int)va_arg(arg, void *);
 	str = ft_ulltoa_base(ptr, "0123456789abcdef");
 	len = ft_strlen(str);
+	if (ptr == 0)
+		len = 0;
 	ft_multipleswrite(flag->space - (len + 2), ' ', flag);
 	write(1, "0x", 2);
 	write(1, str, len);
