@@ -6,12 +6,24 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 12:54:42 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 20:20:57 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 14:34:07 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	ft_initstruct(t_struct *flag)
+{
+	flag->precision = -1;
+	flag->widthnbr = -1;
+	flag->space = 0;
+	flag->nspace = 0;
+	flag->write = 0;
+	flag->snull = 0;
+	flag->zero = 0;
+	flag->dneg = 0;
+}
 
 int		ft_gotoflags(const char *fmt)
 {
@@ -39,11 +51,10 @@ int		ft_addflags(t_struct *flag, const char *fmt, int *x, va_list arg)
 		return (ft_printspace(fmt, x, flag));
 	else if (fmt[*x] == '0')
 		return (ft_printzero(x, flag));
-	else
-		return (-1);
+	return (-1);
 }
 
-int		ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
+void	ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 {
 	int x;
 	int i;
@@ -55,10 +66,11 @@ int		ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 	write(1, fmt, x);
 	flag->write = flag->write + x;
 	if (fmt[x] == '\0')
-		return (0);
-	x++;
+		return ;
 	while (fmt[x])
 	{
+		if (fmt[x] == '%')
+			x++;
 		while (temp != -1)
 			temp = ft_addflags(flag, fmt, &x, arg);
 		ft_printconvert(fmt, flag, arg, &x);
@@ -68,21 +80,17 @@ int		ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 		write(1, fmt + x, i);
 		flag->write = flag->write + i;
 		x = x + i;
-		if (fmt[x] == '%')
-			x++;
 	}
-	return (0);
 }
 
 int		ft_printf(const char *fmt, ...)
 {
-	va_list arg;
-	t_struct flag;
+	va_list		arg;
+	t_struct	flag;
 
 	va_start(arg, fmt);
 	ft_initstruct(&flag);
-	if (ft_print_parse(fmt, arg, &flag) == -1)
-		return (-1);
+	ft_print_parse(fmt, arg, &flag);
 	va_end(arg);
-	return(flag.write);
+	return (flag.write);
 }

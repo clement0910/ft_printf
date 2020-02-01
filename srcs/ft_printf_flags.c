@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 09:38:47 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 20:24:20 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 12:44:46 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ int		ft_printleftspace(const char *fmt, int *x, t_struct *flag, va_list arg)
 		if (flag->nspace < 0)
 			flag->nspace = flag->nspace * -1;
 		(*x)++;
-		return (1);	
+		return (1);
 	}
 	while (fmt[*x] >= '0' && fmt[*x] <= '9')
 	{
@@ -39,10 +39,10 @@ int		ft_printprecision(const char *fmt, int *x, t_struct *flag, va_list arg)
 	{
 		flag->precision = va_arg(arg, int);
 		(*x)++;
-		return (1);	
+		return (1);
 	}
 	flag->precision = 0;
-	while (fmt[*x] >= '0' && fmt[*x] <= '9') // répétitif donc peut-etre remplacer par atoi modifier
+	while (fmt[*x] >= '0' && fmt[*x] <= '9')
 	{
 		flag->precision = (flag->precision * 10) + (fmt[*x] - '0');
 		(*x)++;
@@ -56,7 +56,7 @@ int		ft_printwidth(t_struct *flag, int *x, va_list arg)
 	(*x)++;
 	if (flag->widthnbr < 0)
 		flag->nspace = flag->widthnbr * -1;
-	if (flag->widthnbr > 0) //Dans tous les cas et voir si ou egale a zero
+	else
 		flag->space = flag->widthnbr;
 	return (1);
 }
