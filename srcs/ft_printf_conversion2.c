@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/01 12:22:16 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 12:38:06 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 15:46:46 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,11 +78,21 @@ void	ft_convert_percent(t_struct *flag)
 	ft_multipleswrite(flag->nspace - 1, ' ', flag);
 }
 
-int		findindex(char *tab, char element)
+int		findindex(char element)
 {
-	int x;
+	int		x;
+	char	tab[9];
 
 	x = 0;
+	tab[0] = 's';
+	tab[1] = 'd';
+	tab[2] = 'c';
+	tab[3] = 'p';
+	tab[4] = 'u';
+	tab[5] = 'x';
+	tab[6] = 'X';
+	tab[7] = 'i';
+	tab[8] = 0;
 	while (tab[x])
 	{
 		if (tab[x] == element)
@@ -94,15 +104,20 @@ int		findindex(char *tab, char element)
 	return (-1);
 }
 
-void	ft_printconvert(const char *fmt, t_struct *flag, va_list arg, int *x)
+void	ft_printfunc(char *fmt, t_struct *flag, va_list arg, int *x)
 {
-	void (*tabFunction[8])(t_struct *, va_list) = {ft_convert_s,
-	ft_convert_d, ft_convert_c, ft_convert_p, ft_convert_u, ft_convert_x,
-	ft_convert_xmaj, ft_convert_d};
-	char tabIndex[9] = 	{'s', 'd', 'c', 'p', 'u', 'x', 'X', 'i', 0};
-	int index;
+	void	(*tabfunction[8])(t_struct *, va_list);
+	int		index;
 
-	index = findindex(tabIndex, fmt[*x]);
+	tabfunction[0] = ft_convert_s;
+	tabfunction[1] = ft_convert_d;
+	tabfunction[2] = ft_convert_c;
+	tabfunction[3] = ft_convert_p;
+	tabfunction[4] = ft_convert_u;
+	tabfunction[5] = ft_convert_x;
+	tabfunction[6] = ft_convert_xmaj;
+	tabfunction[7] = ft_convert_d;
+	index = findindex(fmt[*x]);
 	if (index == -1)
 		return ;
 	if (index == -2)
@@ -111,6 +126,6 @@ void	ft_printconvert(const char *fmt, t_struct *flag, va_list arg, int *x)
 		(*x)++;
 		return ;
 	}
-	(*tabFunction[index])(flag, arg);
+	(*tabfunction[index])(flag, arg);
 	(*x)++;
 }

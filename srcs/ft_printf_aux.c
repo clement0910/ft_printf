@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/21 13:11:02 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 14:33:57 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 15:34:25 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,5 +106,4 @@ void		ft_refreshstruct(t_struct *flag)
 	flag->nspace = 0;
 	flag->snull = 0;
 	flag->zero = 0;
-	flag->dneg = 0;
 }

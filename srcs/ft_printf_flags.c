@@ -6,14 +6,14 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 09:38:47 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 12:44:46 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 15:44:57 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_printleftspace(const char *fmt, int *x, t_struct *flag, va_list arg)
+int		ft_printlspace(char *fmt, int *x, t_struct *flag, va_list arg)
 {
 	(*x)++;
 	if (fmt[*x] == '*')
@@ -32,7 +32,7 @@ int		ft_printleftspace(const char *fmt, int *x, t_struct *flag, va_list arg)
 	return (1);
 }
 
-int		ft_printprecision(const char *fmt, int *x, t_struct *flag, va_list arg)
+int		ft_printpreci(char *fmt, int *x, t_struct *flag, va_list arg)
 {
 	(*x)++;
 	if (fmt[*x] == '*')
@@ -61,7 +61,7 @@ int		ft_printwidth(t_struct *flag, int *x, va_list arg)
 	return (1);
 }
 
-int		ft_printspace(const char *fmt, int *x, t_struct *flag)
+int		ft_printspace(char *fmt, int *x, t_struct *flag)
 {
 	while (fmt[*x] >= '0' && fmt[*x] <= '9')
 	{

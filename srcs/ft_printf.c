@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 12:54:42 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 14:34:07 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 15:48:16 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,6 @@ void	ft_initstruct(t_struct *flag)
 	flag->write = 0;
 	flag->snull = 0;
 	flag->zero = 0;
-	flag->dneg = 0;
 }
 
 int		ft_gotoflags(const char *fmt)
@@ -39,12 +38,12 @@ int		ft_gotoflags(const char *fmt)
 	return (i);
 }
 
-int		ft_addflags(t_struct *flag, const char *fmt, int *x, va_list arg)
+int		ft_addflags(t_struct *flag, char *fmt, int *x, va_list arg)
 {
 	if (fmt[*x] == '-')
-		return (ft_printleftspace(fmt, x, flag, arg));
+		return (ft_printlspace(fmt, x, flag, arg));
 	else if (fmt[*x] == '.')
-		return (ft_printprecision(fmt, x, flag, arg));
+		return (ft_printpreci(fmt, x, flag, arg));
 	else if (fmt[*x] == '*')
 		return (ft_printwidth(flag, x, arg));
 	else if (fmt[*x] > '0' && fmt[*x] <= '9')
@@ -72,8 +71,8 @@ void	ft_print_parse(const char *fmt, va_list arg, t_struct *flag)
 		if (fmt[x] == '%')
 			x++;
 		while (temp != -1)
-			temp = ft_addflags(flag, fmt, &x, arg);
-		ft_printconvert(fmt, flag, arg, &x);
+			temp = ft_addflags(flag, (char *)fmt, &x, arg);
+		ft_printfunc((char *)fmt, flag, arg, &x);
 		temp = 0;
 		ft_refreshstruct(flag);
 		i = ft_gotoflags(fmt + x);
