@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_putunsignednbr_fd.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/01 11:38:43 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/01 18:22:25 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+void	ft_putunsignednbr_fd(unsigned int x, int fd)
 {
-	int	*r;
-
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	if (x < 10)
+		ft_putchar_fd(x + 48, fd);
+	else
+	{
+		ft_putunsignednbr_fd(x / 10, fd);
+		ft_putunsignednbr_fd(x % 10, fd);
+	}
 }

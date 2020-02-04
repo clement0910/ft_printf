@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_strrchr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/10 17:59:01 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/12 12:10:42 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	*r;
+	int x;
 
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	x = ft_strlen(s);
+	while (x > 0)
+	{
+		if (s[x] == c)
+			return ((char *)s + x);
+		x--;
+	}
+	if (s[x] == c)
+		return ((char *)s);
+	return (0);
 }

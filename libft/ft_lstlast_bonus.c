@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_lstlast.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/29 12:57:56 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/29 16:58:33 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	*r;
-
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

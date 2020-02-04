@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_free_tab.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/26 13:58:46 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/29 16:18:11 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+char	**ft_free_tab(char **str)
 {
-	int	*r;
+	int x;
 
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	x = 0;
+	if (!str)
+		return (0);
+	while (str[x])
+	{
+		free(str[x]);
+		x++;
+	}
+	free(str);
+	return (NULL);
 }

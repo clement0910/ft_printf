@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_lstmap_bonus.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/30 15:30:53 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/30 20:16:25 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	*r;
+	t_list	*first;
+	t_list	*current;
 
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	if (lst && f)
+	{
+		if (!(current = ft_lstnew((*f)(lst->content))))
+			return (NULL);
+		first = current;
+		lst = lst->next;
+		while (lst)
+		{
+			if (!(current->next = ft_lstnew((*f)(lst->content))))
+			{
+				ft_lstclear(&first, (*del));
+				return (NULL);
+			}
+			current = current->next;
+			lst = lst->next;
+		}
+		return (first);
+	}
+	return (NULL);
 }

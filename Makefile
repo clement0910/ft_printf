@@ -22,7 +22,6 @@ FLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRCS:.c=.o)
 
-
 LIB = libft/libft.a
 
 all: $(NAME)

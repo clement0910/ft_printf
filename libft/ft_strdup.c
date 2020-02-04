@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_strdup.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 20:39:05 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/16 18:31:44 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+char	*ft_strdup(const char *s1)
 {
-	int	*r;
+	char	*dest;
+	int		x;
 
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	x = 0;
+	if (!(dest = malloc((ft_strlen(s1) + 1) * sizeof(char))))
+		return (0);
+	while (s1[x] != '\0')
+	{
+		dest[x] = s1[x];
+		x++;
+	}
+	dest[x] = '\0';
+	return (dest);
 }

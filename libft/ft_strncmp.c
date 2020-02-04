@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf_conversion_bonus.c                     .::    .:/ .      .::   */
+/*   ft_strncmp.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 17:04:17 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 18:29:55 by csapt       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 19:05:25 by csapt        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/12 14:35:59 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_convert_n(t_struct *flag, va_list arg)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	*r;
+	size_t				i;
+	unsigned char		*s1_tmp;
+	unsigned char		*s2_tmp;
 
-	r = va_arg(arg, int*);
-	*r = flag->write;
+	s1_tmp = (unsigned char *)s1;
+	s2_tmp = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1_tmp[i] == s2_tmp[i] && s1_tmp[i] != 0 && n - 1 > i)
+		i++;
+	return ((int)(s1_tmp[i] - s2_tmp[i]));
 }

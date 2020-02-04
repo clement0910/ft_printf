@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   libftprintf_bonus.h                              .::    .:/ .      .::   */
+/*   libftprintf.h                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/01 15:35:45 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 17:12:11 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 18:21:38 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_BONUS_H
-# define LIBFTPRINTF_BONUS_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include "../libft/libft.h"
 # include <inttypes.h>
 # include <stdarg.h>
