@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 12:54:42 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 17:12:29 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:49:11 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "libftprintf.h"
 
 void	ft_initstruct(t_struct *flag)
 {

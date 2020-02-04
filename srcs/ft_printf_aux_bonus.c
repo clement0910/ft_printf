@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 13:03:50 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 17:01:46 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:47:56 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "libftprintf.h"
 
 void		ft_putlongnbr(long long x, int fd)
 {

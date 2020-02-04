@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/01 12:22:16 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 12:07:45 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:47:56 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "libftprintf.h"
 
 void	ft_convert_x(t_struct *flag, va_list arg)
 {

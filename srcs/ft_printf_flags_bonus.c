@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/01 21:27:03 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 18:58:19 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:47:56 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "libftprintf.h"
 
 int		ft_printb_hexa(int *x, t_struct *flag)
 {
