@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 09:38:47 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 15:44:57 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/02 22:58:43 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 int		ft_printlspace(char *fmt, int *x, t_struct *flag, va_list arg)
 {

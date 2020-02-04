@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/21 13:11:02 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 15:34:25 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:03:17 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void		ft_multipleswrite(int x, char c, t_struct *flag)
 {
@@ -23,7 +23,7 @@ void		ft_multipleswrite(int x, char c, t_struct *flag)
 	}
 }
 
-int			ft_ullintlen(unsigned long long int nbr, char *base)
+int			ft_ullintlen(unsigned long long nbr, char *base)
 {
 	int lenbase;
 	int x;
@@ -69,35 +69,6 @@ char		*ft_ulltoa_base(unsigned long long int nbr, char *base)
 	return (str);
 }
 
-char		*ft_utoa_base(unsigned int nbr, char *base)
-{
-	int		x;
-	int		m;
-	char	*str;
-	int		lenbase;
-
-	x = 0;
-	if (nbr == 0)
-	{
-		str = malloc(2 * sizeof(char));
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
-	lenbase = ft_strlen(base);
-	m = ft_ullintlen(nbr, base);
-	str = malloc((m + 1) * sizeof(char));
-	while (nbr > 0)
-	{
-		str[x] = base[nbr % lenbase];
-		nbr = nbr / lenbase;
-		x++;
-	}
-	str[x] = '\0';
-	ft_strrev(str);
-	return (str);
-}
-
 void		ft_refreshstruct(t_struct *flag)
 {
 	flag->precision = -1;
@@ -106,4 +77,9 @@ void		ft_refreshstruct(t_struct *flag)
 	flag->nspace = 0;
 	flag->snull = 0;
 	flag->zero = 0;
+	flag->b_hexa = 0;
+	flag->b_plus = 0;
+	flag->b_space = 0;
+	flag->b_l = 0;
+	flag->b_h = 0;
 }

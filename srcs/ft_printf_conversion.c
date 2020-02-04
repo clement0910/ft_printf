@@ -6,12 +6,12 @@
 /*   By: csapt <csapt@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/19 10:15:14 by csapt        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 21:11:35 by csapt       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:04:57 by csapt       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void	ft_convert_s(t_struct *flag, va_list arg)
 {
@@ -41,31 +41,16 @@ void	ft_convert_s(t_struct *flag, va_list arg)
 
 void	ft_convert_d(t_struct *flag, va_list arg)
 {
-	long	d;
-	int		len;
-
-	d = va_arg(arg, int);
-	if (flag->precision == 0 && d == 0)
-	{
-		ft_multipleswrite(flag->space, ' ', flag);
-		ft_multipleswrite(flag->nspace, ' ', flag);
-		return ;
-	}
-	if (d < 0)
-		ft_convertdnegutils(flag, d);
+	if (flag->b_h == 1)
+		ft_convert_hd(flag, arg);
+	else if (flag->b_h == 2)
+		ft_convert_hhd(flag, arg);
+	else if (flag->b_l == 1)
+		ft_convert_ld(flag, arg);
+	else if (flag->b_l == 2)
+		ft_convert_lld(flag, arg);
 	else
-	{
-		len = ft_ullintlen(d, "0123456789");
-		ft_convert_dutils(flag, len);
-		if (flag->space > 0 && flag->zero == 0)
-			ft_multipleswrite(flag->space, ' ', flag);
-		if (flag->space > 0 && flag->zero == 1)
-			ft_multipleswrite(flag->space, '0', flag);
-		ft_multipleswrite(flag->precision, '0', flag);
-		ft_putunsignednbr_fd(d, 1);
-		flag->write = flag->write + len;
-		ft_multipleswrite(flag->nspace, ' ', flag);
-	}
+		ft_convert_d_bonus(flag, arg);
 }
 
 void	ft_convert_c(t_struct *flag, va_list arg)
@@ -88,7 +73,7 @@ void	ft_convert_p(t_struct *flag, va_list arg)
 	ptr = (unsigned long long int)va_arg(arg, void *);
 	str = ft_ulltoa_base(ptr, "0123456789abcdef");
 	len = ft_strlen(str);
-	if (ptr == 0)
+	if (flag->precision > -1)
 		len = 0;
 	ft_multipleswrite(flag->space - (len + 2), ' ', flag);
 	write(1, "0x", 2);
@@ -100,24 +85,14 @@ void	ft_convert_p(t_struct *flag, va_list arg)
 
 void	ft_convert_u(t_struct *flag, va_list arg)
 {
-	unsigned int	d;
-	int				len;
-
-	d = va_arg(arg, unsigned int);
-	if (flag->precision == 0 && d == 0)
-	{
-		ft_multipleswrite(flag->space, ' ', flag);
-		ft_multipleswrite(flag->nspace, ' ', flag);
-		return ;
-	}
-	len = ft_ullintlen(d, "0123456789");
-	ft_convert_dutils(flag, len);
-	if (flag->space > 0 && flag->zero == 0)
-		ft_multipleswrite(flag->space, ' ', flag);
-	if (flag->space > 0 && flag->zero == 1)
-		ft_multipleswrite(flag->space, '0', flag);
-	ft_multipleswrite(flag->precision, '0', flag);
-	ft_putunsignednbr_fd(d, 1);
-	flag->write = flag->write + len;
-	ft_multipleswrite(flag->nspace, ' ', flag);
+	if (flag->b_h == 1)
+		ft_convert_hu(flag, arg);
+	else if (flag->b_h == 2)
+		ft_convert_hhu(flag, arg);
+	else if (flag->b_l == 1)
+		ft_convert_lu(flag, arg);
+	else if (flag->b_l == 2)
+		ft_convert_llu(flag, arg);
+	else
+		ft_convert_u_bonus(flag, arg);
 }
