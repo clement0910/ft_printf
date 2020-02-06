@@ -73,7 +73,7 @@ void	ft_convert_p(t_struct *flag, va_list arg)
 	ptr = (unsigned long long int)va_arg(arg, void *);
 	str = ft_ulltoa_base(ptr, "0123456789abcdef");
 	len = ft_strlen(str);
-	if (flag->precision > -1)
+	if (ptr == 0 && flag->precision == 0)
 		len = 0;
 	ft_multipleswrite(flag->space - (len + 2), ' ', flag);
 	write(1, "0x", 2);
